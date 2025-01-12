@@ -9,7 +9,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwa83"]
 radius = 13.0
-height = 52.0
+height = 48.0
 
 [sub_resource type="Animation" id="Animation_eqpki"]
 length = 0.001
@@ -140,6 +140,9 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 16
+motion_mode = 1
+wall_min_slide_angle = 0.174533
 script = SubResource("GDScript_wlfrm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -162,3 +165,5 @@ script = ExtResource("3_4fyun")
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("4_wmi23")
+
+[node name="Camera2D" type="Camera2D" parent="."]
