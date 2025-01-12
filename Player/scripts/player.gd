@@ -1,9 +1,9 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
-var speed : float = 100.0
-var state : String = "idle"
+@onready var state_machine: PlayerStateMachine = $StateMachine
+
 
 # NOTE: variables up here will be available on the player for other scripts to use
 
@@ -13,6 +13,7 @@ var state : String = "idle"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	state_machine.init(self)
 	pass # Replace with function body.
 
 
@@ -20,20 +21,16 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
 	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-	velocity = direction * speed
 
-	if updateState() == true || setDir() == true:
-		updateAnim()
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
 
-func setDir() -> bool:
+func setDirection() -> bool:
 	var new_dir : Vector2 = cardinal_direction
-	if new_dir == Vector2.ZERO:
+	if direction == Vector2.ZERO:
 		return false
-	#print('y: ' + str(direction.y))
-	#print('x: ' + str(direction.x))
+
 	
 	if direction.y == 0:
 		new_dir = Vector2.LEFT if direction.x < 0 else Vector2.RIGHT
@@ -44,28 +41,16 @@ func setDir() -> bool:
 		return false
 
 	cardinal_direction = new_dir
-	
 	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
-
-	return true
-	
-func updateState() -> bool:
-	var new_state = "idle" if direction == Vector2.ZERO else "walk"
-	if new_state == state:
-		return false
-
-	state = new_state
-
 	return true
 
-func translateDir():
-	if cardinal_direction == Vector2.UP:
-		return "up"
-	elif cardinal_direction == Vector2.DOWN:
+func updateAnimation( state : String) -> void:
+	animation_player.play( state + "_" + animationDirection() )
+
+func animationDirection():
+	if cardinal_direction == Vector2.DOWN:
 		return "down"
+	elif cardinal_direction == Vector2.UP:
+		return "up"
 	else:
-		print("cardinal_direction: " + str(cardinal_direction))
 		return "side"
-
-func updateAnim() -> void:	
-	animation_player.play(state + '_' + translateDir())

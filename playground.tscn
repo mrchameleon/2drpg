@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dpkrthlipqrpr"]
 
 [ext_resource type="PackedScene" uid="uid://cndymxscrtbjh" path="res://player.tscn" id="1_f7u2m"]
-[ext_resource type="Script" path="res://Player/player.gd" id="2_r8vw0"]
+[ext_resource type="Script" path="res://Player/scripts/player.gd" id="2_r8vw0"]
 
 [node name="Playground" type="Node2D"]
 position = Vector2(224, 121)
