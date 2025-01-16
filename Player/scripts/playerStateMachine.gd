@@ -8,7 +8,6 @@ var current_state : State
 func _ready():
 	# no code in ready will run, until this is re-enabled.
 	process_mode = Node.PROCESS_MODE_DISABLED
-	pass
 	
 func _process(delta):
 	changeState( current_state.process(delta) )

@@ -6,7 +6,7 @@ var direction : Vector2 = Vector2.ZERO
 
 
 # NOTE: variables up here will be available on the player for other scripts to use
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_player: AnimationPlayer = $Sprite2D/AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
 
@@ -14,25 +14,15 @@ var direction : Vector2 = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	state_machine.init(self)
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	# old
-	#direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	#direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-	#
-	#direction = direction.normalized()
-
-	# refactored:
+func _process(_delta: float) -> void:
 	direction = Vector2(
 		Input.get_axis("left", "right"),
 		Input.get_axis("up", "down")
 	).normalized()
-	pass
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func setDirection() -> bool:
@@ -53,7 +43,6 @@ func setDirection() -> bool:
 	return true
 
 func updateAnimation( state : String) -> void:
-	print(state)
 	animation_player.play( state + "_" + animationDirection() )
 
 func animationDirection():
