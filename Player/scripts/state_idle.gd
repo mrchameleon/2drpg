@@ -1,6 +1,6 @@
 class_name StateIdle extends State
 
-@onready var walk: StateWalk = $"../Walk"
+@onready var walk: State = $"../Walk"
 
 func enter() -> void:
 	player.updateAnimation("idle")
@@ -11,7 +11,6 @@ func exit() -> void:
 func process( _delta: float ) -> State:
 	if player.direction != Vector2.ZERO:
 		return walk
-
 	player.velocity = Vector2.ZERO
 	return null
 

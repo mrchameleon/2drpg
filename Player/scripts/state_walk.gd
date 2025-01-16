@@ -1,18 +1,18 @@
 class_name StateWalk extends State
 
 @export var moveSpeed : float = 100.0
-
-@onready var idle: StateIdle = $StateMachine/Idle
+@onready var idle: StateIdle = $"../Idle"
 
 func enter() -> void:
 	player.updateAnimation("walk")
+	pass
 	
 func exit() -> void:
 	pass
 	
 func process( _delta: float ) -> State:
 	if player.direction == Vector2.ZERO:
-		player.updateAnimation("idle")
+		return idle
 	
 	player.velocity = player.direction * moveSpeed
 	
