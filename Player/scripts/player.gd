@@ -13,6 +13,7 @@ var direction : Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	PlayerManager.player = self
 	state_machine.init(self)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,7 +30,7 @@ func setDirection() -> bool:
 	var new_dir : Vector2 = cardinal_direction
 	if direction == Vector2.ZERO:
 		return false
-		
+	
 	if direction.y == 0:
 		new_dir = Vector2.LEFT if direction.x < 0 else Vector2.RIGHT
 	elif direction.x == 0:

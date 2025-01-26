@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://dpkrthlipqrpr"]
+[gd_scene load_steps=6 format=4 uid="uid://dpkrthlipqrpr"]
 
 [ext_resource type="PackedScene" uid="uid://cndymxscrtbjh" path="res://player.tscn" id="1_f7u2m"]
 [ext_resource type="Script" path="res://Player/scripts/player.gd" id="2_r8vw0"]
 [ext_resource type="PackedScene" uid="uid://04ikybrwcqac" path="res://tilemaps/Grass-01.tscn" id="3_5pw5e"]
 [ext_resource type="PackedScene" uid="uid://lwshu4ahfonv" path="res://Props/Plants/plant.tscn" id="4_bxgow"]
+[ext_resource type="PackedScene" uid="uid://dhv8y88xfta1h" path="res://Enemies/Slime/slime.tscn" id="5_mln7v"]
 
 [node name="Playground" type="Node2D"]
 y_sort_enabled = true
@@ -36,3 +37,9 @@ position = Vector2(267, -60)
 
 [node name="Plant7" parent="." instance=ExtResource("4_bxgow")]
 position = Vector2(376, 4)
+
+[node name="Slime" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(-43, -20)
+
+[node name="Slime2" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(108, 77)
