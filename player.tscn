@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://cndymxscrtbjh"]
+[gd_scene load_steps=30 format=3 uid="uid://cndymxscrtbjh"]
 
 [ext_resource type="Texture2D" uid="uid://bwj5ir37h8lp" path="res://Player/assets/PlayerSprite02.png" id="1_6uvx1"]
+[ext_resource type="PackedScene" uid="uid://lybj6244o34n" path="res://HelperNodes/hurtbox/hurtbox.tscn" id="1_h4mdi"]
 [ext_resource type="AudioStream" uid="uid://c627mdi7tbxw4" path="res://Player/audio/SwordSwoosh.wav" id="1_s07b7"]
 [ext_resource type="Texture2D" uid="uid://8gcn0n3x3dn7" path="res://Player/assets/AttackSprite01.png" id="2_mled6"]
 [ext_resource type="Script" path="res://Player/scripts/playerStateMachine.gd" id="2_rmn0u"]
@@ -10,6 +11,9 @@
 [ext_resource type="Script" path="res://Player/scripts/state_walk.gd" id="4_wmi23"]
 
 [sub_resource type="GDScript" id="GDScript_wlfrm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2o3ph"]
+radius = 20.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwa83"]
 radius = 13.0
@@ -431,6 +435,14 @@ collision_mask = 16
 motion_mode = 1
 wall_min_slide_angle = 0.174533
 script = SubResource("GDScript_wlfrm")
+
+[node name="Hurtbox" parent="." instance=ExtResource("1_h4mdi")]
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 20)
+shape = SubResource("CircleShape2D_2o3ph")
+debug_color = Color(0.878431, 0.152941, 0.384314, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_wwa83")
