@@ -547,10 +547,6 @@ attack_sound = ExtResource("1_s07b7")
 script = ExtResource("4_wmi23")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-limit_left = -500
-limit_top = -300
-limit_right = 500
-limit_bottom = 300
 editor_draw_limits = true
 script = ExtResource("10_hjis6")
 

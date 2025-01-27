@@ -2,7 +2,7 @@ class_name Plant extends Node2D
 
 
 func _ready() -> void:
-	$Hitbox.Damaged.connect( TakeDamage )
+	$Hitbox.damaged.connect( TakeDamage )
 
 func TakeDamage( _damage : int) -> void:
 	# this "removes/cleans up the node"

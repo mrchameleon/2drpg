@@ -43,3 +43,90 @@ position = Vector2(-43, -20)
 
 [node name="Slime2" parent="." instance=ExtResource("5_mln7v")]
 position = Vector2(108, 77)
+
+[node name="Slime3" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(-153, 129)
+
+[node name="Slime4" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(-34, 253)
+
+[node name="Slime5" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(-275, 248)
+
+[node name="Slime6" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(-341, 176)
+
+[node name="Slime7" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(-386, 57)
+
+[node name="Slime8" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(-384, 19)
+
+[node name="Slime9" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(-398, 399)
+
+[node name="Slime10" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(-112, 451)
+
+[node name="Slime11" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(141, 459)
+
+[node name="Slime12" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(339, 381)
+
+[node name="Slime13" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(564, 481)
+
+[node name="Slime14" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(782, 362)
+
+[node name="Slime15" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(896, 483)
+
+[node name="Slime16" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(961, 487)
+
+[node name="Slime17" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1048, 482)
+
+[node name="Slime18" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1124, 475)
+
+[node name="Slime19" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1108, 346)
+
+[node name="Slime20" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(987, 366)
+
+[node name="Slime21" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1059, 273)
+
+[node name="Slime22" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1121, 244)
+
+[node name="Slime23" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1074, 201)
+
+[node name="Slime24" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1145, 128)
+
+[node name="Slime25" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1166, 189)
+
+[node name="Slime26" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1171, 339)
+
+[node name="Slime27" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1171, 416)
+
+[node name="Slime28" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1012, 408)
+
+[node name="Slime29" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1048, 335)
+
+[node name="Slime30" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1097, 407)
+
+[node name="Slime31" parent="." instance=ExtResource("5_mln7v")]
+position = Vector2(1097, 407)
