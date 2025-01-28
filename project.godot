@@ -18,8 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://_Globals/game_manager.gd"
-PlayerManager="*res://_Globals/player_manager.gd"
 PlayerHud="*res://GUI/player_hud/player_hud.tscn"
+PlayerManager="*res://_Globals/player_manager.gd"
 
 [display]
 
