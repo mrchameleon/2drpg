@@ -831,6 +831,7 @@ next_state = NodePath("../Idle")
 script = ExtResource("12_q4mqt")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.306
 max_polyphony = 4
 
 [node name="DestroyFX" type="Sprite2D" parent="."]

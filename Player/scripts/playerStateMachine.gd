@@ -10,13 +10,13 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_DISABLED
 	
 func _process(delta):
-	changeState( current_state.process(delta) )
+	change_state( current_state.process(delta) )
 
 func _physics_process(delta):
-	changeState( current_state.physics(delta) )
+	change_state( current_state.physics(delta) )
 
 func _unhandled_input(event: InputEvent) -> void:
-	changeState( current_state.handleInput(event) )
+	change_state( current_state.handleInput(event) )
 
 func init( _player : Player ) -> void:
 	states = []
@@ -25,12 +25,19 @@ func init( _player : Player ) -> void:
 		if c is State:
 			states.append(c)
 	
-	if states.size() > 0:
-		states[0].player = _player
-		changeState( states[0] )
-		process_mode = Node.PROCESS_MODE_INHERIT
+	if states.size() == 0:
+		return
 
-func changeState( new_state : State) -> void:
+	states[0].player = _player
+	states[0].state_machine = self
+	
+	for state in states:
+		state.init()
+	
+	change_state( states[0] )
+	process_mode = Node.PROCESS_MODE_INHERIT
+
+func change_state( new_state : State) -> void:
 	if new_state == null || new_state == current_state:
 		return
 	

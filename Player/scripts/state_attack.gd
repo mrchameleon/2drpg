@@ -16,8 +16,8 @@ var attacking: bool = false
 
 
 func enter() -> void:
-	player.updateAnimation("attack")
-	sword_anim.play("attack_" + player.animationDirection())
+	player.update_animation("attack")
+	sword_anim.play("attack_" + player.animation_direction())
 	animation_player.animation_finished.connect(endAttack)
 	player_audio.stream = attack_sound
 	player_audio.pitch_scale = randf_range(0.85, 1.15)

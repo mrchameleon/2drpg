@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://lwshu4ahfonv"]
+[gd_scene load_steps=6 format=3 uid="uid://lwshu4ahfonv"]
 
 [ext_resource type="Script" path="res://Props/Plants/plant.gd" id="1_yi0u1"]
 [ext_resource type="Texture2D" uid="uid://0lbchj3y2qru" path="res://Props/Sprites/Props.png" id="2_whtuh"]
 [ext_resource type="PackedScene" uid="uid://dpbseh8ub165w" path="res://HelperNodes/hitbox/hitbox.tscn" id="3_b51qp"]
-[ext_resource type="Script" path="res://HelperNodes/hitbox/hitbox.gd" id="4_mnt6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_860yw"]
 size = Vector2(33, 30)
@@ -21,7 +20,6 @@ hframes = 16
 vframes = 3
 
 [node name="Hitbox" parent="." instance=ExtResource("3_b51qp")]
-script = ExtResource("4_mnt6x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 1)
