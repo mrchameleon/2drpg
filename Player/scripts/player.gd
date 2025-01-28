@@ -83,7 +83,10 @@ func _take_damage( hurtbox: Hurtbox ) -> void:
 	
 func update_hp( delta : int ) -> void:
 	# limit any increases/decreases between 0 to max_hp
-	hp = clampi( hp + delta, 0, max_hp ) 
+	hp = clampi( hp + delta, 0, max_hp )
+	# update hp_gui (heart containers)
+	PlayerHud.update_hp(hp, max_hp)
+	
 	
 func make_invulnerable( _duration : float = 1.0 ) -> void:
 	invulnerable = true
