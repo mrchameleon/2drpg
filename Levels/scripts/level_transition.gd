@@ -3,8 +3,6 @@ class_name LevelTransition extends Area2D
 
 enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 
-var is_colliding : bool = false
-
 @export_file( "*.tscn ") var level 
 @export var target_transition_area : String = "LevelTransition"
 
@@ -48,7 +46,6 @@ func _ready() -> void:
 func _player_entered(_p : Node2D) -> void:
 	print("player global pos: %s" % _p.global_position)
 	GameManager.load_new_level(level, target_transition_area, get_offset())
-	is_colliding = false
 
 func _place_player() -> void:
 	if name != GameManager.target_transition:
@@ -103,7 +100,3 @@ func _snap_to_grid() -> void:
 	# 16px, 32px, etc
 	position.x = round(position.x / 16) * 16
 	position.y = round(position.y / 16) * 16
-
-
-func _on_body_entered(body: Node2D) -> void:
-	is_colliding = true

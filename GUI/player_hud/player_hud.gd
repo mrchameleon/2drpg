@@ -16,11 +16,12 @@ func update_hp( _hp, _max_hp ) -> void:
 
 
 func update_heart(_index : int, _hp : int) -> void:
-	var _value : int = clamp( _hp - _index * 2, 0, 2)
-	hearts[_index].value = _value
+	if hearts:
+		var _value : int = clamp( _hp - _index * 2, 0, 2)
+		hearts[_index].value = _value
 	
 func update_max_hp(_max_hp : int) -> void:
-	var _heart_count : int = round(_max_hp / 2)
+	var _heart_count : int = round(_max_hp * 0.5)
 	for i in hearts.size():
 		if i < _heart_count:
 			hearts[i].visible = true

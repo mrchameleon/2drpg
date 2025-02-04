@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody2D
 
-
-signal direction_changed( new_direction: Vector2 )
+# unused code
+# signal direction_changed( new_direction: Vector2 )
 signal player_damaged ( hurtbox: Hurtbox )
 
 # missed a thing where this was added, but the code is in enemy that could be copied over
@@ -11,8 +11,8 @@ var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 
 var invulnerable : bool = false
-var hp : int = 6
-var max_hp : int = 6
+@export var hp : int = 6
+@export var max_hp : int = 6
 
 
 
