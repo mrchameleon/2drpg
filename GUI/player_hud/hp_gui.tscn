@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ctidltpahx6hs" path="res://GUI/player_hud/gui-health.png" id="1_m86dc"]
 
 [node name="heart" type="Control"]
-custom_minimum_size = Vector2(9, 9)
+custom_minimum_size = Vector2(9, 8)
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_7tsas")

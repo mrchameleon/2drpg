@@ -1,6 +1,6 @@
 class_name StateWalk extends State
 
-@export var moveSpeed : float = 100.0
+@export var moveSpeed : float = 200.0
 @onready var idle: StateIdle = $"../Idle"
 @onready var attack: StateAttack = $"../Attack"
 

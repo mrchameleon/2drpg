@@ -8,10 +8,10 @@ var limit_bottom
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	GameManager.TilemapBoundsChanged.connect( UpdateLimits )
-	UpdateLimits( GameManager.current_tilemap_bounds )
+	GameManager.tilemap_bounds_changed.connect( update_limits )
+	update_limits( GameManager.current_tilemap_bounds )
 
-func UpdateLimits( bounds: Array[Vector2] ) -> void:
+func update_limits( bounds: Array[Vector2] ) -> void:
 	if bounds == []:
 		return
 	limit_left = int( bounds[0].x )

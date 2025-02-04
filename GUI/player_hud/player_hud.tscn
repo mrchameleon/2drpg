@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cflcf26xqy0fl" path="res://GUI/player_hud/hp_gui.tscn" id="2_x7gmr"]
 
 [node name="PlayerHud" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_q6dqm")
 
 [node name="Control" type="Control" parent="."]
@@ -17,19 +18,22 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="hp_text" type="Sprite2D" parent="Control"]
+visible = false
 position = Vector2(458, 8)
 texture = ExtResource("1_3p3ni")
 region_enabled = true
 region_rect = Rect2(29.2274, 0, 33.7726, 7.66108)
 
 [node name="hp_container" type="HFlowContainer" parent="Control"]
+layout_direction = 2
 layout_mode = 0
-offset_left = 249.0
-offset_top = 16.0
-offset_right = 509.0
-offset_bottom = 38.0
-scale = Vector2(0.863, 0.859)
+offset_left = 87.0
+offset_top = -8.0
+offset_right = 367.0
+offset_bottom = 16.0
+scale = Vector2(1.37957, 1.22396)
 alignment = 2
+reverse_fill = true
 
 [node name="heart" parent="Control/hp_container" instance=ExtResource("2_x7gmr")]
 layout_mode = 2
