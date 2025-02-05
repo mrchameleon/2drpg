@@ -1,14 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://mchylqybqlb2"]
+[gd_scene load_steps=8 format=3 uid="uid://c0sktlrop6l4p"]
 
 [ext_resource type="Script" path="res://GUI/pause_menu/pause_menu.gd" id="1_6mn15"]
+[ext_resource type="Texture2D" uid="uid://bmht6boo1mml2" path="res://Items/sprites/items.png" id="2_fj0md"]
+[ext_resource type="Script" path="res://GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="3_cngtp"]
+[ext_resource type="PackedScene" uid="uid://owt5si051bqk" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="3_e767c"]
+[ext_resource type="Resource" uid="uid://d048kfkmyogbk" path="res://GUI/pause_menu/inventory/player_inventory.tres" id="4_d0nue"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lugjd"]
+atlas = ExtResource("2_fj0md")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_epq4v"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("AtlasTexture_lugjd")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 layer = 3
-visible = false
 script = ExtResource("1_6mn15")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,42 +44,102 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0.278431, 0.156863, 0.501961, 0.462745)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.0
+offset_top = 19.0
+offset_right = 66.0
+offset_bottom = 42.0
+grow_horizontal = 2
+mouse_filter = 1
+text = "❤️ ~ You are resting (paused) ~ ❤️"
+
+[node name="ItemDesc" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -129.0
+offset_top = 154.0
+offset_right = 130.0
+offset_bottom = 205.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 11
+text = "..."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -87.0
-offset_top = -41.0
-offset_right = 88.0
-offset_bottom = 33.0
+offset_left = -98.0
+offset_top = -79.0
+offset_right = 98.0
+offset_bottom = 9.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_epq4v")
 
-[node name="savebtn" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+columns = 5
+script = ExtResource("3_cngtp")
+data = ExtResource("4_d0nue")
+
+[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_e767c")]
+layout_mode = 2
+script = null
+
+[node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_e767c")]
+layout_mode = 2
+script = null
+
+[node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_e767c")]
+layout_mode = 2
+script = null
+
+[node name="InventorySlot4" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_e767c")]
+layout_mode = 2
+script = null
+
+[node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_e767c")]
+layout_mode = 2
+script = null
+
+[node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_e767c")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -54.0
+offset_right = 77.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="savebtn" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "save"
 
-[node name="loadbtn" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="loadbtn" type="Button" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "load"
 
-[node name="Label" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -66.0
-offset_top = -86.0
-offset_right = 66.0
-offset_bottom = -63.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
-text = "❤️ ~ paused~ ❤️"
-
-[connection signal="pressed" from="ColorRect/VBoxContainer/savebtn" to="." method="_on_savebtn_pressed"]
-[connection signal="pressed" from="ColorRect/VBoxContainer/loadbtn" to="." method="_on_loadbtn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/savebtn" to="." method="_on_savebtn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/loadbtn" to="." method="_on_loadbtn_pressed"]
