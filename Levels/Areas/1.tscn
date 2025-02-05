@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://c6kw0qeb62v2w"]
+[gd_scene load_steps=11 format=4 uid="uid://c6kw0qeb62v2w"]
 
 [ext_resource type="Script" path="res://Levels/scripts/level.gd" id="1_n0buv"]
 [ext_resource type="PackedScene" uid="uid://04ikybrwcqac" path="res://tilemaps/Grass-01.tscn" id="2_jnsk8"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dhv8y88xfta1h" path="res://Enemies/Slime/slime.tscn" id="4_hct7s"]
 [ext_resource type="PackedScene" uid="uid://c6yj22gmlqql8" path="res://Levels/level_transition.tscn" id="5_faei5"]
 [ext_resource type="PackedScene" uid="uid://lwshu4ahfonv" path="res://Props/Plants/plant.tscn" id="6_243tg"]
+[ext_resource type="PackedScene" uid="uid://pswxff50ixq2" path="res://Items/item_pickup/item_pickup.tscn" id="7_l6yvr"]
+[ext_resource type="Resource" uid="uid://cwerf0sip6fvc" path="res://Items/orb.tres" id="8_07v1d"]
+[ext_resource type="Resource" uid="uid://dv1t7xc8po7po" path="res://Items/potion.tres" id="9_x8jhk"]
+[ext_resource type="Resource" uid="uid://bo7dn2mfqw1g2" path="res://Items/stone.tres" id="10_6rjhw"]
 
 [node name="Area1" type="Node2D"]
 script = ExtResource("1_n0buv")
@@ -41,3 +45,31 @@ position = Vector2(42, 48)
 
 [node name="Plant2" parent="." instance=ExtResource("6_243tg")]
 position = Vector2(97, 48)
+
+[node name="ItemPickup" parent="." instance=ExtResource("7_l6yvr")]
+position = Vector2(135, 123)
+item_data = ExtResource("8_07v1d")
+
+[node name="ItemPickup2" parent="." instance=ExtResource("7_l6yvr")]
+position = Vector2(468, 167)
+item_data = ExtResource("8_07v1d")
+
+[node name="ItemPickup3" parent="." instance=ExtResource("7_l6yvr")]
+position = Vector2(217, 203)
+item_data = ExtResource("8_07v1d")
+
+[node name="ItemPickup4" parent="." instance=ExtResource("7_l6yvr")]
+position = Vector2(249, -34)
+item_data = ExtResource("8_07v1d")
+
+[node name="ItemPickup5" parent="." instance=ExtResource("7_l6yvr")]
+position = Vector2(439, -30)
+item_data = ExtResource("8_07v1d")
+
+[node name="ItemPickup6" parent="." instance=ExtResource("7_l6yvr")]
+position = Vector2(-49, 240)
+item_data = ExtResource("9_x8jhk")
+
+[node name="ItemPickup7" parent="." instance=ExtResource("7_l6yvr")]
+position = Vector2(302, 227)
+item_data = ExtResource("10_6rjhw")

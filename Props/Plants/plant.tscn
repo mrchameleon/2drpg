@@ -20,6 +20,7 @@ hframes = 16
 vframes = 3
 
 [node name="Hitbox" parent="." instance=ExtResource("3_b51qp")]
+unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 1)
