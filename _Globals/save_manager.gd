@@ -23,11 +23,12 @@ var current_save : Dictionary = {
 func save_game() -> void:
 	update_player_data()
 	update_scene_path()
+	update_item_data()
 	var file := FileAccess.open(SAVE_PATH + "ponder.orb", FileAccess.WRITE)
 	var save_json = JSON.stringify( current_save )
 	file.store_line(save_json)
 	game_saved.emit()
-	print("game data was saved!")
+	print("game data was saved to path: %s" % SAVE_PATH)
 
 	
 func load_game() -> void:
@@ -47,11 +48,12 @@ func load_game() -> void:
 		Vector2(current_save.player.pos_x, current_save.player.pos_y)
 	)
 	PlayerManager.set_health(current_save.player.hp, current_save.player.max_hp)
+	PlayerManager.INVENTORY_DATA.parse_items_save_data(current_save.items)
 	
 	await GameManager.level_loaded
 	
 	game_loaded.emit()
-	print("saved game data loaded!")
+	print("saved game data loaded from path: %s" % SAVE_PATH)
 
 
 func update_player_data() -> void:
@@ -64,3 +66,7 @@ func update_player_data() -> void:
 
 func update_scene_path() -> void:
 	current_save.scene_path = get_tree().current_scene.scene_file_path
+
+
+func update_item_data() -> void:
+	current_save.items = PlayerManager.INVENTORY_DATA.get_item_data()
