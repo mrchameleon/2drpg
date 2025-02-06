@@ -3,6 +3,7 @@ extends CanvasLayer
 signal shown
 signal hidden
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var savebtn: Button = $Control/VBoxContainer/savebtn
 @onready var loadbtn: Button = $Control/VBoxContainer/loadbtn
 @onready var item_desc: Label = $Control/ItemDesc
@@ -53,3 +54,9 @@ func _on_loadbtn_pressed() -> void:
 
 func update_item_description(new_text : String) -> void:
 	item_desc.text = new_text
+
+# note: AudioStream is non-directional
+# AudioStreamPlayer2D has directional sound
+func play_sound(audio : AudioStream) -> void:
+	audio_stream_player.stream = audio
+	audio_stream_player.play()
