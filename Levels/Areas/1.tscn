@@ -80,5 +80,5 @@ position = Vector2(302, 227)
 item_data = ExtResource("10_6rjhw")
 
 [node name="ItemPickup8" parent="." instance=ExtResource("7_l6yvr")]
-position = Vector2(122, 82)
+position = Vector2(51, 0)
 item_data = ExtResource("11_4o4sp")

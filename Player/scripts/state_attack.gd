@@ -25,7 +25,9 @@ func enter() -> void:
 	
 	attacking = true
 	await get_tree().create_timer(0.075).timeout
-	hurtbox.monitoring = true
+	if attacking:
+		hurtbox.monitoring = true
+
 	
 func exit() -> void:
 	animation_player.animation_finished.disconnect(endAttack)

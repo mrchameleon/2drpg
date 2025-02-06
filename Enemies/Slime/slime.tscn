@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dhv8y88xfta1h"]
+[gd_scene load_steps=40 format=3 uid="uid://dhv8y88xfta1h"]
 
 [ext_resource type="Texture2D" uid="uid://beq82vlci506a" path="res://Player/assets/Shadow.png" id="1_ka5r2"]
 [ext_resource type="Script" path="res://Enemies/Scripts/enemy.gd" id="1_pss7d"]
@@ -13,6 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://u6wkpwvgymxa" path="res://Enemies/Slime/DestroySmoke.png" id="10_33vnh"]
 [ext_resource type="Script" path="res://Enemies/Scripts/States/enemy_state_stun.gd" id="11_17kl4"]
 [ext_resource type="Script" path="res://Enemies/Scripts/States/enemy_state_destroy.gd" id="12_q4mqt"]
+[ext_resource type="Script" path="res://Enemies/Scripts/drop_data.gd" id="13_e8tlg"]
+[ext_resource type="Resource" uid="uid://bo7dn2mfqw1g2" path="res://Items/stone.tres" id="14_gt7rm"]
+[ext_resource type="Resource" uid="uid://bgc3pu3vais15" path="res://Items/apple.tres" id="15_gdonv"]
+[ext_resource type="Resource" uid="uid://cwerf0sip6fvc" path="res://Items/orb.tres" id="16_4uv3y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5xaqo"]
 
@@ -57,6 +61,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.944657, 0.223827, 0.706534, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shadow:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0715144, 0.133398, 0.259774, 0.592157)]
 }
 
 [sub_resource type="Animation" id="Animation_qsbxb"]
@@ -146,6 +162,18 @@ tracks/5/keys = {
 "clips": PackedStringArray("destroy"),
 "times": PackedFloat32Array(0)
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shadow:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0715144, 0.133398, 0.259774, 0.592157), Color(0.0705882, 0.133333, 0.258824, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ueowx"]
 resource_name = "destroy_side"
@@ -234,6 +262,18 @@ tracks/5/keys = {
 "clips": PackedStringArray("destroy"),
 "times": PackedFloat32Array(0)
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shadow:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0715144, 0.133398, 0.259774, 0.592157), Color(0.0705882, 0.133333, 0.258824, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_okg44"]
 resource_name = "destroy_up"
@@ -321,6 +361,18 @@ tracks/5/loop_wrap = true
 tracks/5/keys = {
 "clips": PackedStringArray("destroy"),
 "times": PackedFloat32Array(0)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Shadow:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0715144, 0.133398, 0.259774, 0.592157), Color(0.0705882, 0.133333, 0.258824, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_082kk"]
@@ -706,6 +758,27 @@ _data = {
 "walk_up": SubResource("Animation_06roc")
 }
 
+[sub_resource type="Resource" id="Resource_b7gux"]
+script = ExtResource("13_e8tlg")
+item = ExtResource("14_gt7rm")
+probability = 100.0
+min_amount = 1
+max_amount = 1
+
+[sub_resource type="Resource" id="Resource_mrbhq"]
+script = ExtResource("13_e8tlg")
+item = ExtResource("15_gdonv")
+probability = 20.0
+min_amount = 1
+max_amount = 1
+
+[sub_resource type="Resource" id="Resource_2pwch"]
+script = ExtResource("13_e8tlg")
+item = ExtResource("16_4uv3y")
+probability = 10.0
+min_amount = 1
+max_amount = 1
+
 [sub_resource type="Animation" id="Animation_al14m"]
 length = 0.001
 tracks/0/type = "value"
@@ -829,6 +902,7 @@ next_state = NodePath("../Idle")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("12_q4mqt")
+drops = Array[ExtResource("13_e8tlg")]([SubResource("Resource_b7gux"), SubResource("Resource_mrbhq"), SubResource("Resource_2pwch"), null])
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = -10.306
