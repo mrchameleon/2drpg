@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cndymxscrtbjh"]
+[gd_scene load_steps=44 format=3 uid="uid://cndymxscrtbjh"]
 
 [ext_resource type="Texture2D" uid="uid://bwj5ir37h8lp" path="res://Player/assets/PlayerSprite02.png" id="1_6uvx1"]
 [ext_resource type="PackedScene" uid="uid://lybj6244o34n" path="res://HelperNodes/hurtbox/hurtbox.tscn" id="1_h4mdi"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Player/scripts/state_stun.gd" id="10_d3acy"]
 [ext_resource type="Script" path="res://Player/scripts/camera.gd" id="10_hjis6"]
 [ext_resource type="PackedScene" uid="uid://dpbseh8ub165w" path="res://HelperNodes/hitbox/hitbox.tscn" id="12_bxcai"]
+[ext_resource type="Script" path="res://Player/scripts/interaction.gd" id="13_2e73e"]
 [ext_resource type="AudioStream" uid="uid://c3jn67aojm5q4" path="res://Player/audio/hit_player.wav" id="13_otyol"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwa83"]
@@ -532,28 +533,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_2o3ph"]
 radius = 20.0
 
-[sub_resource type="GDScript" id="GDScript_1kwrd"]
-script/source = "# DEAD CODE - REMOVE
-class_name PlayerInteraction extends Node2D
-#
-#@onready var player: Player = $\"..\"
-#
-#func _ready() -> void:
-	#pass#player.DirectionChanged.connect( updateDirection )
-#
-#func updateDirection( new_direction : Vector2 ) -> void:
-	#match new_direction:
-		#Vector2.DOWN:
-			#rotation_degrees = 0
-		#Vector2.UP:
-			#rotation_degrees = 180
-		#Vector2.LEFT:
-			#rotation_degrees = 90
-		#Vector2.RIGHT:
-			#rotation_degrees = -90
-		#_:
-			#rotation_degrees = 0
-"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iaadt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_om3bi"]
 
@@ -698,8 +678,18 @@ script = ExtResource("10_d3acy")
 editor_draw_limits = true
 script = ExtResource("10_hjis6")
 
-[node name="Interactions(RemoveMe?)" type="Node2D" parent="."]
-script = SubResource("GDScript_1kwrd")
+[node name="Interactions" type="Node2D" parent="."]
+script = ExtResource("13_2e73e")
+
+[node name="Area2D" type="Area2D" parent="Interactions"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/Area2D"]
+position = Vector2(0, 28)
+shape = SubResource("RectangleShape2D_iaadt")
+debug_color = Color(0, 0.7, 0.306138, 0.42)
 
 [node name="Hitbox" parent="." instance=ExtResource("12_bxcai")]
 collision_layer = 2
