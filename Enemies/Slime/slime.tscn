@@ -761,23 +761,23 @@ _data = {
 [sub_resource type="Resource" id="Resource_b7gux"]
 script = ExtResource("13_e8tlg")
 item = ExtResource("14_gt7rm")
-probability = 33.0
-min_amount = 50
-max_amount = 100
+probability = 100.0
+min_amount = 1
+max_amount = 5
 
 [sub_resource type="Resource" id="Resource_mrbhq"]
 script = ExtResource("13_e8tlg")
 item = ExtResource("15_gdonv")
-probability = 33.0
-min_amount = 11
-max_amount = 22
+probability = 22.0
+min_amount = 1
+max_amount = 1
 
 [sub_resource type="Resource" id="Resource_2pwch"]
 script = ExtResource("13_e8tlg")
 item = ExtResource("16_4uv3y")
-probability = 33.0
-min_amount = 69
-max_amount = 69
+probability = 5.0
+min_amount = 1
+max_amount = 1
 
 [sub_resource type="Animation" id="Animation_al14m"]
 length = 0.001
