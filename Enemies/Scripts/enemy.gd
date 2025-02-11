@@ -15,7 +15,7 @@ var player : Player
 var invulnerable : bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var body: Sprite2D = $SlimeBody
+@onready var sprite : Sprite2D = $EnemySprite
 @onready var hitbox: Area2D = $Hitbox
 @onready var enemy_state_machine: EnemyStateMachine = $EnemyStateMachine
 
@@ -51,7 +51,7 @@ func set_direction( _new_direction : Vector2 ) -> bool:
 
 	cardinal_direction = new_dir
 	direction_changed.emit( new_dir )
-	body.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
+	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	return true
 
 
