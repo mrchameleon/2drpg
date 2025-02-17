@@ -5,6 +5,7 @@ enum SIDE { LEFT, RIGHT, TOP, BOTTOM }
 
 @export_file( "*.tscn ") var level 
 @export var target_transition_area : String = "LevelTransition"
+@export var center_player : bool = false
 
 @export_category("Collision Area Settings")
 
@@ -32,7 +33,6 @@ func _ready() -> void:
 		return
 	
 	monitoring = false
-
 	_place_player()
 
 	await GameManager.level_loaded
@@ -50,26 +50,31 @@ func _player_entered(_p : Node2D) -> void:
 func _place_player() -> void:
 	if name != GameManager.target_transition:
 		return
-	else:
-		print("loading player into %s" % GameManager.target_transition)
-		var new_pos = global_position + GameManager.position_offset
-		PlayerManager.set_player_position(new_pos)
+	print("loading player into %s" % GameManager.target_transition)
+	var new_pos = global_position + GameManager.position_offset
+	PlayerManager.set_player_position(new_pos)
 
 func get_offset() -> Vector2:
 	var offset : Vector2 = Vector2.ZERO
 	var player_pos = PlayerManager.player.global_position
 	
 	if side == SIDE.LEFT or side == SIDE.RIGHT:
-		offset.y = player_pos.y - global_position.y
-		offset.x = 16
-		if side == SIDE.LEFT:
-			offset.x *= -1
+		if center_player == true:
+			offset.y = 0
+		else:
+			offset.y = player_pos.y - global_position.y
+			offset.x = 16
+			if side == SIDE.LEFT:
+				offset.x *= -1
 	else:
-		offset.x = player_pos.x - global_position.x
-		offset.y = 16
-		if side == SIDE.TOP:
-			offset.y *= -1
-	
+		if center_player == true:
+			offset.x = 0
+		else:
+			offset.x = player_pos.x - global_position.x
+			offset.y = 16
+			if side == SIDE.TOP:
+				offset.y *= -1
+
 	return offset
 
 func _update_area() -> void:
