@@ -11,6 +11,8 @@ var player_spawned : bool = false
 
 func _ready() -> void:
 	add_player_instance()
+	# this line below keeps spawning at PlayerSpawn working, don't remove
+	await get_tree().create_timer(0.2).timeout
 	player_spawned = true
 
 
@@ -29,12 +31,12 @@ func set_player_position(_new_pos: Vector2) -> void:
 func set_as_parent(_p: Node2D) -> void:
 	# re-parent player to current scene/parent node
 	# to prevent 'wrong layer' issues
-	player_spawned = false
+	#player_spawned = false
 	if player.get_parent():
 		# remove from old parent if necessary
 		player.get_parent().remove_child( player )
 	_p.add_child(player)
-	player_spawned = true
+	#player_spawned = true
 
 func unparent_player(_p: Node2D) -> void:
 	_p.remove_child(player)
