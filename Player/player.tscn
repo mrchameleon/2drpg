@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cndymxscrtbjh"]
+[gd_scene load_steps=46 format=3 uid="uid://cndymxscrtbjh"]
 
 [ext_resource type="Texture2D" uid="uid://bwj5ir37h8lp" path="res://Player/assets/PlayerSprite02.png" id="1_6uvx1"]
 [ext_resource type="PackedScene" uid="uid://lybj6244o34n" path="res://HelperNodes/hurtbox/hurtbox.tscn" id="1_h4mdi"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dpbseh8ub165w" path="res://HelperNodes/hitbox/hitbox.tscn" id="12_bxcai"]
 [ext_resource type="Script" path="res://Player/scripts/interaction.gd" id="13_2e73e"]
 [ext_resource type="AudioStream" uid="uid://c3jn67aojm5q4" path="res://Player/audio/hit_player.wav" id="13_otyol"]
+[ext_resource type="Script" path="res://Player/scripts/push_area.gd" id="14_rpe15"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wwa83"]
 radius = 13.0
@@ -535,6 +536,9 @@ radius = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iaadt"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqa4h"]
+size = Vector2(20, 15)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_om3bi"]
 
 [sub_resource type="Animation" id="Animation_p0fol"]
@@ -624,13 +628,6 @@ texture = ExtResource("1_6uvx1")
 hframes = 16
 vframes = 3
 
-[node name="ShadowSprite" type="Sprite2D" parent="Sprite2D"]
-modulate = Color(0.160784, 0.160784, 0.160784, 0.686275)
-show_behind_parent = true
-position = Vector2(0, 22)
-scale = Vector2(0.75, 0.8125)
-texture = ExtResource("2_rpu68")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
 root_node = NodePath("../..")
 libraries = {
@@ -658,6 +655,12 @@ position = Vector2(0, -12)
 shape = SubResource("CircleShape2D_2o3ph")
 debug_color = Color(0.878431, 0.152941, 0.384314, 0.419608)
 
+[node name="ShadowSprite" type="Sprite2D" parent="."]
+modulate = Color(0.160784, 0.160784, 0.160784, 0.686275)
+position = Vector2(0, 22)
+scale = Vector2(0.75, 0.8125)
+texture = ExtResource("2_rpu68")
+
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("2_rmn0u")
 
@@ -682,6 +685,7 @@ script = ExtResource("10_hjis6")
 script = ExtResource("13_2e73e")
 
 [node name="Area2D" type="Area2D" parent="Interactions"]
+visible = false
 collision_layer = 4
 collision_mask = 0
 monitoring = false
@@ -691,7 +695,19 @@ position = Vector2(0, 28)
 shape = SubResource("RectangleShape2D_iaadt")
 debug_color = Color(0, 0.7, 0.306138, 0.42)
 
+[node name="PushArea" type="Area2D" parent="Interactions"]
+collision_layer = 16
+collision_mask = 273
+monitorable = false
+script = ExtResource("14_rpe15")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/PushArea"]
+position = Vector2(0, 19)
+shape = SubResource("RectangleShape2D_sqa4h")
+debug_color = Color(0.877266, 0.292934, 0.890348, 0.42)
+
 [node name="Hitbox" parent="." instance=ExtResource("12_bxcai")]
+visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
