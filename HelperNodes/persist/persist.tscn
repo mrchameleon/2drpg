@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://boy4i2leish51"]
 
-[ext_resource type="Script" path="res://HelperNodes/persist/persist.gd" id="1_horua"]
+[ext_resource type="Script" uid="uid://cggwei2mhd6nt" path="res://HelperNodes/persist/persist.gd" id="1_horua"]
 
 [node name="Persist" type="Node"]
 script = ExtResource("1_horua")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c2ay48vwiah6x"]
 
 [ext_resource type="Texture2D" uid="uid://ctidltpahx6hs" path="res://GUI/player_hud/gui-health.png" id="1_3p3ni"]
-[ext_resource type="Script" path="res://GUI/player_hud/player_hud.gd" id="1_q6dqm"]
+[ext_resource type="Script" uid="uid://dellbv0w716jt" path="res://GUI/player_hud/player_hud.gd" id="1_q6dqm"]
 [ext_resource type="PackedScene" uid="uid://cflcf26xqy0fl" path="res://GUI/player_hud/hp_gui.tscn" id="2_x7gmr"]
 
 [node name="PlayerHud" type="CanvasLayer"]
